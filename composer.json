@@ -1,9 +1,19 @@
 {
     "name": "crazy252/typo3_kate",
     "type": "typo3-cms-extension",
-    "description": "PHP Superpower for TYPO3",
-    "license": "GPL-2.0-or-later",
-    "version": "0.0.1",
+    "description": "Increase the performance of your TYPO3 project",
+    "license": "GPL-3.0-or-later",
+    "version": "0.1.0",
+    "support": {
+        "issues": "https://github.com/crazy252/typo3_fatures/issues",
+        "source": "https://github.com/crazy252/typo3_fatures"
+    },
+    "authors": [
+        {
+            "name": "crazy252",
+            "email": "crazy252.cg@gmail.com"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "ext-pcntl": "*",
