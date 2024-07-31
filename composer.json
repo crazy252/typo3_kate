@@ -1,0 +1,26 @@
+{
+    "name": "crazy252/typo3_kate",
+    "type": "typo3-cms-extension",
+    "description": "PHP Superpower for TYPO3",
+    "license": "GPL-2.0-or-later",
+    "version": "0.0.1",
+    "require": {
+        "php": "^7.2",
+        "ext-pcntl": "*",
+        "ext-posix": "*",
+        "typo3/cms-core": "^10 || ^11 || ^12"
+    },
+    "bin": [
+        "bin/roadrunner-worker"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Crazy252\\Typo3Kate\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "typo3_kate"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+version: '3'
+
+rpc:
+  listen: 'tcp://127.0.0.1:6001'
+
+server:
+  command: '/usr/bin/php public/worker.php'
+  relay: pipes
+
+http:
+  address: '0.0.0.0:8080'
+  middleware:
+    - static
+  static:
+    dir: /var/www/html/public
+  pool:
+    num_workers: 1
+    max_jobs: 500
+
+logs:
+  level: debug
+  output: stdout
+  encoding: json

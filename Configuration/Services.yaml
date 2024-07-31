@@ -1,0 +1,29 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Crazy252\Typo3Kate\:
+    resource: '../Classes/*'
+
+  Crazy252\Typo3Kate\Command\InstallCommand:
+    tags:
+      - name: 'console.command'
+        command: 'kate:install'
+        description: 'This will install TYPO3 Kate within your project'
+  Crazy252\Typo3Kate\Command\StartCommand:
+    tags:
+      - name: 'console.command'
+        command: 'kate:start'
+        description: 'Start the TYPO3 Kate server'
+  Crazy252\Typo3Kate\Command\ReloadCommand:
+    tags:
+      - name: 'console.command'
+        command: 'kate:reload'
+        description: 'Reload the TYPO3 Kate server'
+  Crazy252\Typo3Kate\Command\StopCommand:
+    tags:
+      - name: 'console.command'
+        command: 'kate:stop'
+        description: 'Stop the TYPO3 Kate server'
