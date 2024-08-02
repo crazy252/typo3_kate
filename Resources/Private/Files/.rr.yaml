@@ -4,7 +4,7 @@ rpc:
   listen: 'tcp://127.0.0.1:6001'
 
 server:
-  command: '/usr/bin/php public/worker.php'
+  command: '/usr/bin/php ./vendor/bin/roadrunner-worker'
   relay: pipes
 
 http:
