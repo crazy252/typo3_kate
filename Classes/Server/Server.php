@@ -12,8 +12,11 @@ abstract class Server
 {
     use Find;
 
-    protected InputInterface $input;
-    protected OutputInterface $output;
+    /** @var InputInterface */
+    protected $input;
+
+    /** @var OutputInterface */
+    protected $output;
 
     public function __construct(InputInterface $input, OutputInterface $output)
     {

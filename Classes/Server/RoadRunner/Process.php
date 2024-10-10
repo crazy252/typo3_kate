@@ -13,7 +13,8 @@ class Process
 {
     use Find;
 
-    protected Context $context;
+    /** @var Context */
+    protected $context;
 
     public function __construct(Context $context)
     {

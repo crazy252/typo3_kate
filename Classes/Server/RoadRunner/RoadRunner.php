@@ -19,13 +19,19 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class RoadRunner extends Server implements ServerInterface
 {
+    /** @var string */
     const PACKAGE_HTTP = 'spiral/roadrunner-http';
+    /** @var string */
     const PACKAGE_CLI = 'spiral/roadrunner-cli';
 
+    /** @var string */
     const FILE_CONFIG = '.rr.yaml';
+    /** @var string */
     const FILE_WORKER = 'roadrunner-worker.php';
 
-    protected Context $context;
+    /** @var Context */
+    protected $context;
+    /** @var mixed */
     protected $config;
 
     public function __construct(InputInterface $input, OutputInterface $output)
