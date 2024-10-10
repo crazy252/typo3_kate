@@ -192,46 +192,61 @@ class RoadRunner extends Server implements ServerInterface
 
         $output = explode("\n", $output);
         $output = array_filter($output);
+
         foreach ($output as $line) {
             $debug = json_decode($line, true);
             if (!is_array($debug)) {
-                continue;
-            }
-
-            if ($debug['msg'] !== 'http log') {
-                continue;
-            }
-
-            
-            /*$debug = json_decode($line, true);
-            if (!is_array($debug)) {
-                $this->output->writeln('<info>' . $line . '</info>');
+                $this->info($line);
                 continue;
             }
 
             $stream = json_decode($debug['msg'], true);
             if (is_array($stream)) {
-                //$this->handleStream($stream);
+                $this->raw('TODO: handle stream...');
                 continue;
             }
-
-            if (strpos($debug['logger'], 'server') !== false) {
-                $this->output->writeln($debug['msg']);
+            if ($debug['logger'] == 'server') {
+                $this->raw($debug['msg']);
                 continue;
             }
-
-            if (strpos($debug['level'], 'info') !== false and isset($debug['remote_address']) and
-                isset($debug['msg']) and strpos($debug['msg'], 'http log') !== false) {
-                $this->output->writeln($debug['msg']);
-            }*/
+            if ($debug['level'] == 'INFO' and $debug['msg'] == 'http log' and isset($debug['remote_address']) and isset($debug['msg'])) {
+                $this->raw(
+                    $this->requestInfoMessage(
+                        (int) $debug['status'],
+                        $debug['method'],
+                        $debug['URI'],
+                        $debug['write_bytes'],
+                        $debug['elapsed']
+                    )
+                );
+            }
         }
 
         $errorOutput = explode("\n", $errorOutput);
         $errorOutput = array_filter($errorOutput);
+
         foreach ($errorOutput as $line) {
             if (strpos($line, 'DEBUG') === false || strpos($line, 'INFO') === false || strpos($line, 'WARN') === false) {
-                $this->output->writeln('<comment>' . $line . '</comment>');
+                $this->error($line);
             }
         }
+    }
+
+    /**
+     * @param int|string|float $time
+     * @return float|string
+     */
+    public function formatDuration($time)
+    {
+        if (str_ends_with($time, 'ms')) {
+            return $time;
+        }
+        if (str_ends_with($time, 'µs')) {
+            return (mb_substr($time, 0, -2) * 0.001) . 'ms';
+        }
+        if (filter_var($time, FILTER_VALIDATE_INT) !== false) {
+            return $time . 'ms';
+        }
+        return ($time * 1000) . 'ms';
     }
 }

@@ -16,6 +16,7 @@
     ],
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "ext-pcntl": "*",
         "ext-posix": "*",
         "typo3/cms-core": "^10 || ^11 || ^12"

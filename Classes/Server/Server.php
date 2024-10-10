@@ -3,6 +3,8 @@
 namespace Crazy252\Typo3Kate\Server;
 
 use Crazy252\Typo3Kate\Traits\Find;
+use Crazy252\Typo3Kate\Traits\Output;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -11,6 +13,7 @@ use Symfony\Component\Process\Process;
 abstract class Server
 {
     use Find;
+    use Output;
 
     /** @var InputInterface */
     protected $input;
@@ -40,7 +43,7 @@ abstract class Server
         copy($source, $target);
     }
 
-    protected function run(Process $server)
+    protected function run(Process $server): int
     {
         while (!$server->isStarted()) {
             sleep(1);
@@ -56,7 +59,7 @@ abstract class Server
             }
 
             $this->writeServerOutput($server);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return Command::SUCCESS;
         } finally {
             return $this->stop();
