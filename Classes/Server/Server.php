@@ -2,7 +2,7 @@
 
 namespace Crazy252\Typo3Kate\Server;
 
-use Crazy252\Typo3Kate\Trait\Find;
+use Crazy252\Typo3Kate\Traits\Find;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

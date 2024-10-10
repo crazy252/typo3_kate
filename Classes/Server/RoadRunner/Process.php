@@ -4,7 +4,7 @@ namespace Crazy252\Typo3Kate\Server\RoadRunner;
 
 use Crazy252\Typo3Kate\Exception\RoadRunner\RoloadException;
 use Crazy252\Typo3Kate\Exception\RoadRunner\RpcNotFoundException;
-use Crazy252\Typo3Kate\Trait\Find;
+use Crazy252\Typo3Kate\Traits\Find;
 use Crazy252\Typo3Kate\Utility\ArrayUtility;
 use Symfony\Component\Process\Process as SymfonyProcess;
 use TYPO3\CMS\Core\Core\Environment;

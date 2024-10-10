@@ -1,6 +1,6 @@
 <?php
 
-namespace Crazy252\Typo3Kate\Trait;
+ namespace Crazy252\Typo3Kate\Traits;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Process\Process;
